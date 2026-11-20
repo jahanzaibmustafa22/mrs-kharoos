@@ -1,0 +1,644 @@
+/* =========================================================
+   ROOT VARIABLES & ROMANTIC PALETTE
+========================================================= */
+:root {
+  --bg-deep: #0b0510;
+  --bg-plum: #1d0b24;
+  --rose-primary: #ff5e8e;
+  --rose-soft: #ffb6c1;
+  --gold-accent: #f7d08a;
+  --gold-glow: rgba(247, 208, 138, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 192, 203, 0.22);
+  --text-light: #fff6f8;
+  --text-muted: #e2c6d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(circle at top, var(--bg-plum) 0%, var(--bg-deep) 75%);
+  color: var(--text-light);
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Canvases */
+#bg-canvas, #fx-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#bg-canvas { z-index: 0; }
+#fx-canvas { z-index: 999; }
+
+/* Music Toggle Button */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(29, 11, 36, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--gold-accent);
+  color: var(--gold-accent);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 20px rgba(247, 208, 138, 0.25);
+  transition: all 0.35s ease;
+}
+
+.music-btn:hover {
+  background: var(--gold-accent);
+  color: var(--bg-deep);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* =========================================================
+   GLASSMORPHISM CARDS
+========================================================= */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 0 25px rgba(255, 182, 193, 0.06);
+}
+
+/* =========================================================
+   COUNTDOWN SCREEN (BEFORE 12:00 AM)
+========================================================= */
+.screen {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.screen.fade-out {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.countdown-card {
+  max-width: 680px;
+  width: 100%;
+  padding: 50px 35px;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.78rem;
+  color: var(--gold-accent);
+  margin-bottom: 14px;
+}
+
+.script-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 400;
+  color: var(--rose-soft);
+  text-shadow: 0 0 25px rgba(255, 94, 142, 0.6);
+  margin-bottom: 18px;
+}
+
+.urdu-teaser {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.35rem;
+  line-height: 2.3;
+  color: var(--gold-accent);
+  margin-bottom: 30px;
+}
+
+.timer-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.time-box {
+  background: rgba(255, 94, 142, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  border-radius: 18px;
+  padding: 18px 22px;
+  min-width: 95px;
+  box-shadow: 0 0 25px rgba(255, 94, 142, 0.15);
+}
+
+.time-box span {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  color: #fff;
+}
+
+.time-box small {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--rose-soft);
+}
+
+.colon {
+  font-size: 2.5rem;
+  color: var(--gold-accent);
+  animation: pulse 1s infinite;
+}
+
+.hint-text {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  color: var(--rose-soft);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ghost-btn:hover {
+  background: rgba(255, 94, 142, 0.2);
+  border-color: var(--rose-primary);
+  color: #fff;
+}
+
+/* =========================================================
+   MAIN CELEBRATION SCREEN
+========================================================= */
+#celebration-screen {
+  position: relative;
+  z-index: 10;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 40px 20px 90px;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 15px;
+}
+
+.crown-glow {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 18px var(--gold-glow));
+  animation: floatSlow 3.5s ease-in-out infinite;
+}
+
+.date-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  border: 1px solid rgba(247, 208, 138, 0.35);
+  padding: 8px 20px;
+  border-radius: 50px;
+  margin-bottom: 22px;
+  background: rgba(247, 208, 138, 0.08);
+}
+
+.hero-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.6rem, 9vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffe3ec;
+  text-shadow: 0 0 18px rgba(255, 94, 142, 0.8), 0 0 38px rgba(247, 208, 138, 0.55);
+  margin-bottom: 16px;
+}
+
+.urdu-hero {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  line-height: 2.3;
+  color: var(--gold-accent);
+  text-shadow: 0 0 25px rgba(247, 208, 138, 0.45);
+  margin-bottom: 24px;
+}
+
+.hero-quote {
+  max-width: 650px;
+  font-size: 1.35rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 45px;
+}
+
+.scroll-indicator {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rose-soft);
+  opacity: 0.85;
+}
+
+.scroll-indicator .arrow {
+  font-size: 1.4rem;
+  margin-top: 6px;
+  animation: bounce 1.8s infinite;
+}
+
+/* =========================================================
+   INTERACTIVE BIRTHDAY CAKE
+========================================================= */
+.cake-section {
+  margin: 40px 0 90px;
+}
+
+.cake-card {
+  padding: 55px 25px;
+  text-align: center;
+}
+
+.section-heading {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  font-weight: 400;
+  color: var(--rose-soft);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-sub {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 45px;
+}
+
+.cake-wrapper {
+  position: relative;
+  width: 240px;
+  height: 210px;
+  margin: 30px auto 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cake-wrapper:hover {
+  transform: scale(1.04);
+}
+
+.plate {
+  width: 250px;
+  height: 14px;
+  background: linear-gradient(to right, #d4af37, #fff1b8, #d4af37);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.layer {
+  position: absolute;
+  width: 210px;
+  left: 15px;
+  border-radius: 14px 14px 6px 6px;
+  background: linear-gradient(to right, #8e244d, #d84374, #8e244d);
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.layer-bottom { height: 48px; bottom: 10px; }
+.layer-middle { height: 42px; bottom: 56px; width: 186px; left: 27px; }
+.layer-top    { height: 38px; bottom: 96px; width: 162px; left: 39px; }
+
+.icing {
+  position: absolute;
+  bottom: 124px;
+  left: 37px;
+  width: 166px;
+  height: 16px;
+  background: #fff0f5;
+  border-radius: 12px;
+}
+
+.drip {
+  position: absolute;
+  background: #fff0f5;
+  width: 14px;
+  border-radius: 0 0 10px 10px;
+  bottom: 112px;
+}
+.drip1 { left: 52px; height: 22px; }
+.drip2 { left: 110px; height: 28px; }
+.drip3 { left: 168px; height: 20px; }
+
+.candles {
+  position: absolute;
+  bottom: 138px;
+  left: 65px;
+  width: 110px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.candle {
+  width: 10px;
+  height: 36px;
+  background: repeating-linear-gradient(45deg, #fff, #fff 4px, #ff5e8e 4px, #ff5e8e 8px);
+  border-radius: 4px;
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 20px;
+  background: radial-gradient(ellipse at bottom, #fff 15%, #ffeb3b 45%, #ff9800 80%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  box-shadow: 0 0 18px #ff9800, 0 0 35px #ffeb3b;
+  animation: flicker 0.25s infinite alternate;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.flame.out {
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+}
+
+.smoke {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.smoke.rise {
+  animation: smokeRise 1.8s ease-out forwards;
+}
+
+.wish-status {
+  font-size: 1.2rem;
+  color: var(--gold-accent);
+  font-style: italic;
+  margin-top: 15px;
+}
+
+/* =========================================================
+   ROMANTIC URDU POETRY SECTION
+========================================================= */
+.poetry-section {
+  margin-bottom: 95px;
+}
+
+.urdu-section-sub {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.4rem;
+  line-height: 2.3;
+  color: var(--gold-accent);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.poetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.poetry-card {
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.poetry-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 24px 55px rgba(255, 94, 142, 0.22);
+}
+
+.ornament {
+  font-size: 1.6rem;
+  color: var(--gold-accent);
+  margin-bottom: 12px;
+}
+
+.urdu-verse {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.45rem;
+  line-height: 2.55;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 12px rgba(255, 182, 193, 0.35);
+}
+
+.english-trans {
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 182, 193, 0.18);
+  padding-top: 14px;
+}
+
+/* =========================================================
+   HEARTFELT URDU WISHES LETTER
+========================================================= */
+.wishes-section {
+  margin-bottom: 70px;
+}
+
+.letter-card {
+  padding: 55px 38px;
+  background: linear-gradient(145deg, rgba(255, 94, 142, 0.08), rgba(29, 11, 36, 0.65));
+}
+
+.urdu-letter-title {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.7rem;
+  line-height: 2.4;
+  color: var(--gold-accent);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.urdu-wishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 780px;
+  margin: 0 auto 38px;
+}
+
+.urdu-wish-item {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.38rem;
+  line-height: 2.6;
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px 24px;
+  border-radius: 18px;
+  border-right: 3px solid var(--rose-primary);
+}
+
+.urdu-wish-final {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.65rem;
+  line-height: 2.5;
+  color: var(--gold-accent);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signature-box {
+  text-align: center;
+  border-top: 1px solid rgba(255, 182, 193, 0.2);
+  padding-top: 26px;
+}
+
+.signature-box p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: var(--rose-soft);
+}
+
+/* =========================================================
+   FOOTER & LOVE BURST BUTTON
+========================================================= */
+.footer-section {
+  text-align: center;
+}
+
+.glow-btn {
+  background: linear-gradient(135deg, var(--rose-primary), #c2185b);
+  color: #fff;
+  border: none;
+  padding: 16px 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 94, 142, 0.45);
+  transition: all 0.35s ease;
+  margin-bottom: 22px;
+}
+
+.glow-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 15px 40px rgba(255, 94, 142, 0.7);
+}
+
+.footer-note {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   SCROLL REVEAL & KEYFRAME ANIMATIONS
+========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+  100% { transform: translateX(-50%) scale(1.08) rotate(2deg); }
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -45px) scale(3); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .time-box { min-width: 74px; padding: 14px 10px; }
+  .letter-card { padding: 38px 20px; }
+  .urdu-verse { font-size: 1.3rem; line-height: 2.6; }
+  .urdu-wish-item { font-size: 1.25rem; line-height: 2.6; }
+}

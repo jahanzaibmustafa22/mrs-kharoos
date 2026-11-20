@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Mrs Kharoos ✨</title>
+
+  <!-- Google Fonts: Romantic English & Authentic Nastaliq Urdu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Canvases for Starlight, Petals & Midnight Fireworks -->
+  <canvas id="bg-canvas"></canvas>
+  <canvas id="fx-canvas"></canvas>
+
+  <!-- Floating Music Control -->
+  <button id="music-toggle" class="music-btn" aria-label="Toggle Romantic Melody">
+    <span class="music-icon">🎵</span>
+    <span id="music-label">Play Melody</span>
+  </button>
+
+  <!-- =========================================================
+       STAGE 1: MIDNIGHT COUNTDOWN SCREEN (Before 12:00 AM)
+  ========================================================== -->
+  <section id="countdown-screen" class="screen active">
+    <div class="glass-card countdown-card fade-in-up">
+      <p class="subtitle">Something magical is waiting for you at midnight...</p>
+      <h1 class="script-title">Counting Down to Your Special Moment</h1>
+      
+      <div class="urdu-teaser" dir="rtl" lang="ur">
+        آج رات بارہ بجے ایک حسین لمحہ آنے والا ہے...
+      </div>
+
+      <div class="timer-grid">
+        <div class="time-box">
+          <span id="hours">00</span>
+          <small>Hours</small>
+        </div>
+        <div class="colon">:</div>
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <small>Minutes</small>
+        </div>
+        <div class="colon">:</div>
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <small>Seconds</small>
+        </div>
+      </div>
+
+      <p class="hint-text">Stay right here until the clock strikes 12:00 AM ✨</p>
+      
+      <!-- Optional button if you want to preview the celebration before 12 AM -->
+      <button id="preview-btn" class="ghost-btn">Preview Midnight Surprise ✨</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       STAGE 2: GRAND MIDNIGHT CELEBRATION (Unlocks at 12:00 AM)
+  ========================================================== -->
+  <main id="celebration-screen" class="hidden">
+
+    <!-- HERO SECTION -->
+    <header class="hero-section reveal">
+      <div class="crown-glow">👑</div>
+      <p class="date-badge">It's Officially Your Day • 12:00 AM</p>
+      <h1 class="hero-title">Happy Birthday, <span id="her-name">Mrs Kharoos</span></h1>
+      
+      <div class="urdu-hero" dir="rtl" lang="ur">
+        سالگرہ بہت بہت مبارک ہو میری جان
+      </div>
+      
+      <p class="hero-quote">
+        "The moment the clock struck midnight, the whole world became a little brighter because today is the day you were born."
+      </p>
+
+      <div class="scroll-indicator">
+        <span>Scroll Down For Your Surprise</span>
+        <div class="arrow">↓</div>
+      </div>
+    </header>
+
+    <!-- INTERACTIVE CANDLE WISH SECTION -->
+    <section class="cake-section reveal">
+      <div class="glass-card cake-card">
+        <h2 class="section-heading">Make a Wish & Blow the Candles</h2>
+        <p class="section-sub">Close your eyes, make a wish, and tap the flame below</p>
+
+        <div class="cake-wrapper" id="cake-trigger" title="Click to blow out the candles">
+          <div class="cake">
+            <div class="plate"></div>
+            <div class="layer layer-bottom"></div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-top"></div>
+            <div class="icing"></div>
+            <div class="drip drip1"></div>
+            <div class="drip drip2"></div>
+            <div class="drip drip3"></div>
+            
+            <!-- Candles -->
+            <div class="candles">
+              <div class="candle">
+                <div class="flame" id="flame1"></div>
+                <div class="smoke" id="smoke1"></div>
+              </div>
+              <div class="candle">
+                <div class="flame" id="flame2"></div>
+                <div class="smoke" id="smoke2"></div>
+              </div>
+              <div class="candle">
+                <div class="flame" id="flame3"></div>
+                <div class="smoke" id="smoke3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="wish-status" class="wish-status">✨ Tap the candles to make your wish come true ✨</p>
+      </div>
+    </section>
+
+    <!-- ROMANTIC URDU POETRY ON HER BEAUTY -->
+    <section class="poetry-section reveal">
+      <h2 class="section-heading">In Praise of Your Beauty</h2>
+      <p class="urdu-section-sub" dir="rtl" lang="ur">تمہارے حسن اور مسکراہٹ کے نام چند اشعار</p>
+
+      <div class="poetry-grid">
+        <!-- Sher 1 -->
+        <article class="glass-card poetry-card">
+          <div class="ornament">❦</div>
+          <p class="urdu-verse" dir="rtl" lang="ur">
+            چاند نے بھی جھک کر سلام کیا ہوگا،<br>
+            جب خدا نے تجھے تخلیق کیا ہوگا۔
+          </p>
+          <p class="english-trans">
+            "Even the moon must have bowed in awe, on the day God created someone as breathtaking as you."
+          </p>
+        </article>
+
+        <!-- Sher 2 -->
+        <article class="glass-card poetry-card">
+          <div class="ornament">❦</div>
+          <p class="urdu-verse" dir="rtl" lang="ur">
+            تیرے چہرے کی چمک کے آگے سارے چراغ ماند ہیں،<br>
+            تو مسکرا دے تو لگتا ہے جیسے عید کا چاند ہے۔
+          </p>
+          <p class="english-trans">
+            "Every lamp fades before the radiance of your face; when you smile, it feels like sighting the Eid moon."
+          </p>
+        </article>
+
+        <!-- Sher 3 -->
+        <article class="glass-card poetry-card">
+          <div class="ornament">❦</div>
+          <p class="urdu-verse" dir="rtl" lang="ur">
+            آنکھوں میں حیا، لہجے میں مٹھاس اور چہرے پر نور،<br>
+            سچ کہوں تو تم دنیا کی سب سے حسین تصویر ہو۔
+          </p>
+          <p class="english-trans">
+            "Grace in your eyes, sweetness in your voice, and light upon your face—truly, you are the loveliest masterpiece in this world."
+          </p>
+        </article>
+
+        <!-- Sher 4 -->
+        <article class="glass-card poetry-card">
+          <div class="ornament">❦</div>
+          <p class="urdu-verse" dir="rtl" lang="ur">
+            پھولوں نے تجھ سے خوشبو ادھار لی ہوگی،<br>
+            ستاروں نے تیری آنکھوں سے چمک پائی ہوگی۔
+          </p>
+          <p class="english-trans">
+            "The flowers must have borrowed their fragrance from you, and the stars surely stole their sparkle from your eyes."
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HEARTFELT URDU BIRTHDAY WISHES -->
+    <section class="wishes-section reveal">
+      <div class="glass-card letter-card">
+        <h2 class="section-heading">Heartfelt Birthday Wishes For You</h2>
+        <div class="urdu-letter-title" dir="rtl" lang="ur">میری دعا اور نیک تمنائیں</div>
+
+        <div class="urdu-wishes-list" dir="rtl" lang="ur">
+          <p class="urdu-wish-item">
+            🌸 اللہ تعالیٰ تمہاری زندگی کو ہمیشہ خوشیوں، مسکراہٹوں اور سکون سے بھر دے۔ تمہاری ہر جائز خواہش پوری ہو اور تمہارا ہر آنے والا کل گزرے ہوئے کل سے زیادہ حسین ہو۔
+          </p>
+          <p class="urdu-wish-item">
+            ✨ تمہاری مسکراہٹ ہمیشہ یوں ہی چمکتی رہے، کوئی غم کبھی تمہارے قریب نہ آئے، اور تم زندگی کے ہر موڑ پر کامیابی کی بلندیوں کو چھو لو۔
+          </p>
+          <p class="urdu-wish-item">
+            💖 تم میری زندگی کا سب سے خوبصورت حصہ ہو۔ آج کے اس خاص دن پر بس یہی دعا ہے کہ تم ہمیشہ خوش رہو، سلامت رہو، اور یوں ہی اپنی پیاری سی مسکراہٹ سے دنیا کو روشن کرتی رہو۔
+          </p>
+          <p class="urdu-wish-final">
+            ایک بار پھر دل کی گہرائیوں سے سالگرہ مبارک ہو! 🎂❤️
+          </p>
+        </div>
+
+        <div class="signature-box">
+          <p>Forever Yours,</p>
+          <span class="signature">With All My Love ♥</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE LOVE HEART BURST -->
+    <footer class="footer-section reveal">
+      <button id="love-burst-btn" class="glow-btn">Send a Shower of Love & Roses 🌹</button>
+      <p class="footer-note">Made by your Mr Kharoos.</p>
+    </footer>
+
+  </main>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
